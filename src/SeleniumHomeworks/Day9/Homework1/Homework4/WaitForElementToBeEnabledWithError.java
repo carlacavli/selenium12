@@ -1,5 +1,6 @@
-package Day9.Homework4;
+package SeleniumHomeworks.Day9.Homework1.Homework4;
 
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -28,33 +29,33 @@ public class WaitForElementToBeEnabledWithError {
 
         WebElement enable = driver.findElement(By.xpath("//form[@id='input-example']/button"));
         enable.click();
-//
-//        WebDriverWait wait = new WebDriverWait(driver, 2);
-//        if (driver.findElement(By.xpath("//p[@id='message']")).getText().contains("enabled")) {
-//            System.out.println("enable: success");
-//        } else {
-//            System.out.println("enable: failure");
-//            takeScreenShot(driver);
-//        }
-//
-//        // needs improvement - still not complete
-//
-//        Thread.sleep(3000);
-//        driver.quit();
-//    }
 
-//    private static void takeScreenShot(WebDriver driver) {
-//        File homework4 = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-//        String filePath = "file://Users/RefiaSena/Desktop/homework4";
-//
-//        try {
-//            FileUtils.copyFile(homework4, new File(filePath+1+".png"));
-//            System.out.println("***Placed screen shot in "+filePath+" ***");
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
+        WebDriverWait wait = new WebDriverWait(driver, 2);
+        if (driver.findElement(By.xpath("//p[@id='message']")).getText().contains("enabled")) {
+            System.out.println("enable: success");
+        } else {
+            System.out.println("enable: failure");
+            takeScreenShot(driver);
+        }
+
+        // needs improvement - still not complete
+
+        Thread.sleep(3000);
+        driver.quit();
+    }
+
+    private static void takeScreenShot(WebDriver driver) {
+        File homework4 = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        String filePath = "file://Users/RefiaSena/Desktop/homework4";
+
+        try {
+            FileUtils.copyFile(homework4, new File(filePath+1+".png"));
+            System.out.println("***Placed screen shot in "+filePath+" ***");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     }
-}
+
 

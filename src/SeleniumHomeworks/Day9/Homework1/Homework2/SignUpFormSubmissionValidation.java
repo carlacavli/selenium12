@@ -1,4 +1,4 @@
-package Day9.Hoework2;
+package SeleniumHomeworks.Day9.Homework1.Homework2;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -10,35 +10,36 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 
-public class SignUpFormSubmissionParsing {
+public class SignUpFormSubmissionValidation {
     /**
      * open SignUpForm.html
-     * fill in your data inside the all input elements
+     * store values that you will use inside some Strings
+     * fill in your data inside the all input elements using Strings above
      * submit the form
      * get URL
-     * parse values that was submitted and print them out
-     * hint: https://examples.javacodegeeks.com/core-java/net/url/parse-url-example/
-     * like nameOfTheInput = valueOfTheInput
+     * parse values that was submitted
+     * validate parsed values with stored values above
      */
     public static void main(String[] args) throws InterruptedException, MalformedURLException {
-
-        System.setProperty("webdriver.chrome.driver", "/Users/muberracavli/Desktop/TechnoStudy/chrome driver/chromedriver");
-        WebDriver driver = new ChromeDriver();
+     System.setProperty("webdriver.chrome.driver", "/Users/muberracavli/Desktop/TechnoStudy/chrome driver/chromedriver");
+    WebDriver driver = new ChromeDriver();
         driver.get("file:///Users/muberracavli/IdeaProjects/selenium12/src/Day9/Homework1/SignUpForm.html");
-
         driver.manage().window().maximize();
 
         WebElement username = driver.findElement(By.name("username"));
-        username.sendKeys("j.smith");
+        String myUsername = "j.smith";
+        username.sendKeys(myUsername);
 
         WebElement password = driver.findElement(By.name("password"));
-        password.sendKeys("1234qwe");
+        String myPassword = "1234qwe";
+        password.sendKeys(myPassword);
 
         WebElement repeatPassword = driver.findElement(By.name("passwordRpt"));
-        repeatPassword.sendKeys("1234qwe");
+        repeatPassword.sendKeys(myPassword);
 
         WebElement address = driver.findElement(By.name("address"));
-        address.sendKeys("1234 Nirvana Ct" + "\n" + "Some city, USA 00000");
+        String myAddress = "1234 Nirvana Ct, Some city, USA 00000";
+        address.sendKeys(myAddress);
 
         List<WebElement> gender = driver.findElements(By.name("sex"));
         gender.get(0).click();
@@ -61,6 +62,18 @@ public class SignUpFormSubmissionParsing {
         String url = driver.getCurrentUrl();
         parseUrl(driver, url);
 
+        if (url.contains(myUsername)) {
+            System.out.println("username: success");
+        }
+        if (url.contains(myPassword)) {
+            System.out.println("password: success");
+        }
+        if (url.contains(myAddress.substring(0,3))) {
+            System.out.println("address: success");
+        }
+        else
+            System.out.println("fail!");
+
         Thread.sleep(2000);
         driver.quit();
     }
@@ -73,3 +86,4 @@ public class SignUpFormSubmissionParsing {
         }
     }
 }
+
