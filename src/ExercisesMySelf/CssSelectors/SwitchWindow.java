@@ -8,6 +8,6 @@ public class SwitchWindow {
     public void switchWindows() {
         WebDriver driver = new ChromeDriver();
         driver.get("https://learn.letskodeit.com/p/practice");
-
+//????????
     }
 }
