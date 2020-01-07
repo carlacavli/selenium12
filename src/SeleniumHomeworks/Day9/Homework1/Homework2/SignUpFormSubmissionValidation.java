@@ -6,9 +6,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
+import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class SignUpFormSubmissionValidation {
     /**
@@ -20,25 +25,24 @@ public class SignUpFormSubmissionValidation {
      * parse values that was submitted
      * validate parsed values with stored values above
      */
-    public static void main(String[] args) throws InterruptedException, MalformedURLException {
-     System.setProperty("webdriver.chrome.driver", "/Users/muberracavli/Desktop/TechnoStudy/chrome driver/chromedriver");
-    WebDriver driver = new ChromeDriver();
-        driver.get("file:///Users/muberracavli/IdeaProjects/selenium12/src/Day9/Homework1/SignUpForm.html");
-        driver.manage().window().maximize();
+    public static void main(String[] args) throws InterruptedException, MalformedURLException, UnsupportedEncodingException {
 
+        System.setProperty("webdriver.chrome.driver", "/Users/muberracavli/Desktop/TechnoStudy/chrome driver/chromedriver");
+        WebDriver driver = new ChromeDriver();
+        driver.get("file:///Users/muberracavli/IdeaProjects/selenium12/src/Day9/Homework1/SignUpForm.html");
         WebElement username = driver.findElement(By.name("username"));
-        String myUsername = "j.smith";
+        String myUsername = "carla";
         username.sendKeys(myUsername);
 
         WebElement password = driver.findElement(By.name("password"));
-        String myPassword = "1234qwe";
+        String myPassword = "1868";
         password.sendKeys(myPassword);
 
         WebElement repeatPassword = driver.findElement(By.name("passwordRpt"));
         repeatPassword.sendKeys(myPassword);
 
         WebElement address = driver.findElement(By.name("address"));
-        String myAddress = "1234 Nirvana Ct, Some city, USA 00000";
+        String myAddress = "600 Getty Ave, Clifton, USA 00000";
         address.sendKeys(myAddress);
 
         List<WebElement> gender = driver.findElements(By.name("sex"));
@@ -68,10 +72,9 @@ public class SignUpFormSubmissionValidation {
         if (url.contains(myPassword)) {
             System.out.println("password: success");
         }
-        if (url.contains(myAddress.substring(0,3))) {
+        if (url.contains(myAddress.substring(0, 3))) {
             System.out.println("address: success");
-        }
-        else
+        } else
             System.out.println("fail!");
 
         Thread.sleep(2000);
@@ -81,9 +84,8 @@ public class SignUpFormSubmissionValidation {
     private static void parseUrl(WebDriver driver, String url) throws MalformedURLException {
         URL myUrl = new URL(url);
         String sentKeys = myUrl.getQuery();
-        for (String str: sentKeys.split("&")) {
+        for (String str : sentKeys.split("&")) {
             System.out.println(str);
         }
     }
 }
-
