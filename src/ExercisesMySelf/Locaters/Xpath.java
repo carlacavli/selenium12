@@ -1,7 +1,10 @@
 package ExercisesMySelf.Locaters;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+
+import java.util.concurrent.TimeUnit;
 
 public class Xpath {
     public static void main(String[] args) {
@@ -26,8 +29,15 @@ public class Xpath {
 
         System.setProperty("webdriver.chrome.driver", "/Users/muberracavli/Desktop/TechnoStudy/chrome driver/chromedriver");
         WebDriver driver = new ChromeDriver();
-        driver.get( "https://demoqa.com/accordion/" );
+        driver.get( "https://www.facebook.com/" );
 
+        driver.findElement(By.xpath("//input[@name='email']")).sendKeys("abcdef@gmail.com");
+        driver.findElement(By.cssSelector("#pass")).sendKeys("abcdef");
+        driver.findElement(By.xpath("//*[@id=\"u_0_2\"]")).click();
+       // driver.findElement(By.id("loginbutton")).click();
+        driver.findElement(By.xpath("//*[@id=\"login_link\"]/div/a")).click();
+        driver.findElement(By.cssSelector("#recover_openid")).click();
 
+       driver.quit();
     }
 }
