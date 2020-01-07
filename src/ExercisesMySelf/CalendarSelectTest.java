@@ -30,7 +30,7 @@ public class CalendarSelectTest {
         driver.switchTo().frame("mainpanel");
 
         String date = "16-december-2019";
-        String dateArr[] = date.split("-"); // {18,September,2017}
+        String dateArr[] = date.split("-");
         String day = dateArr[0];
         String month = dateArr[1];
         String year = dateArr[2];
