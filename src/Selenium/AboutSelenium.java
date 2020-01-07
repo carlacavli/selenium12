@@ -4,6 +4,7 @@ public class AboutSelenium {
     /*
     What is Selenium?
    Selenium is a free (open source) automated testing suite for web applications across different browsers and platforms.
+   Selenium Webdriver is a powerful automation tool for testing web applications.
 
    Advantages of Selenium
 
